@@ -1,0 +1,113 @@
+﻿Usage: [file | url ...] [options]
+
+Commands:
+  info desc cache levels subdump
+
+Options:
+  Editing Options:
+    -m, --margin LENGTH           Set sections near "loud" as "loud" too if
+                                  section is less than LENGTH away. (default
+                                  is "0.2s")
+    --edit METHOD                 Set an expression which determines how to
+                                  make auto edits. (default is "audio")
+    --when-normal ACTION          When the video is not silent (defined by --edit)
+                                  do an action. The default action being 'nil'
+    --when-silent ACTION          When the video is silent (defined by --edit)
+                                  do an action. The default action being 'cut'
+
+                                  Actions Available:
+                                    nil () ; unchanged/do nothing
+                                    cut () ; remove completely
+                                           ; (like setting the speed to inf)
+                                    speed (val: float)
+                                      ; Change the speed while preserving pitch.
+                                      ;   val: between (0-99999)
+                                    rate (val: float)
+                                      ; Change the speed by varying pitch.
+                                      ;   val: between [0.2-100]
+    -ex, --export EXPORT:ATTRS?   Choose the export mode.
+    -o, --output FILE             Set the name/path of the new output file
+    --cut-out [START,STOP ...]    The range of time that will be cut (removed)
+                                  completely
+    --add-in [START,STOP ...]     The range of time that will be leaved "as is"
+    --set-speed, --set-speed-for-range [SPEED,START,STOP ...]
+                                  Set a SPEED for a given range in time
+    -s, --silent-speed NUM        [Deprecated] Set speed of sections marked
+                                  "silent" to NUM. (default is 99999)
+    -v, --sounded-speed, --video-speed NUM
+                                  [Deprecated] Set speed of sections marked "loud"
+                                  to NUM. (default is 1)
+
+  Timeline Options:
+    -tb, --time-base, -r, -fps, --frame-rate NUM
+                                  Set timeline frame rate
+    -ar, --sample-rate NAT        Set timeline sample rate
+    -res, --resolution WIDTH,HEIGHT
+                                  Set timeline width and height
+    -b, -bg, --background COLOR   Set the background as a solid RGB color
+
+  URL Download Options:
+    --yt-dlp-location PATH        Set a custom path to yt-dlp
+    --download-format FORMAT      Set the yt-dlp download format (--format,
+                                  -f)
+    --output-format TEMPLATE      Set the yt-dlp output file template (
+                                  --output, -o)
+    --yt-dlp-extras CMD           Add extra options for yt-dlp. Must be in
+                                  quotes
+
+  Display Options:
+    --progress PROGRESS           Set what type of progress bar to use
+    --debug                       Show debugging messages and values
+    -q, --quiet                   Display less output
+    --preview, --stats            Show stats on how the input will be cut
+                                  and halt
+
+  Container Settings:
+    -vn                           Disable the inclusion of video streams
+    -an                           Disable the inclusion of audio streams
+    -sn                           Disable the inclusion of subtitle streams
+    -dn                           Disable the inclusion of data streams
+    --faststart                   Enable movflags +faststart, recommended for
+                                  web (default)
+    --no-faststart                Disable movflags +faststart, will be faster
+                                  for large files
+    --fragmented                  Use fragmented mp4/mov to allow playback
+                                  before video is complete. See:
+                                  ffmpeg.org/ffmpeg-formats.html#Fragmentation
+    --no-fragmented               Do not use fragmented mp4/mov for better
+                                  compatibility (default)
+
+  Video Rendering:
+    -c:v, -vcodec, --video-codec ENCODER
+                                  Set video codec for output media
+    -b:v, --video-bitrate BITRATE
+                                  Set the number of bits per second for video
+    -profile:v, -vprofile PROFILE
+                                  Set the video profile. For h264: high, main,
+                                  or baseline
+    --scale NUM                   Scale the output video's resolution by NUM
+                                  factor
+    --no-seek                     Disable file seeking when rendering video.
+                                  Helpful for debugging desync issues
+
+  Audio Rendering:
+    -c:a, -acodec, --audio-codec ENCODER
+                                  Set audio codec for output media
+    -layout, -channel-layout, --audio-layout LAYOUT
+                                  Set the audio layout for the output
+                                  media/timeline
+    -b:a, --audio-bitrate BITRATE
+                                  Set the number of bits per second for audio
+    --mix-audio-streams           Mix all audio streams together into one
+    --audio-normalize, -anorm NORM-TYPE
+                                  Apply audio normalizing (either ebu or peak).
+                                  Applied right before rendering the output file
+
+  Miscellaneous:
+    --no-open                     Do not open the output file after editing
+                                  is done
+    --temp-dir PATH               Set where the temporary directory is located
+    -V, --version                 Display version and halt
+    -h, --help                    Show info about this program or option
+                                  then exit
+
