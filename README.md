@@ -160,5 +160,4 @@ MIT License — use freely for personal or commercial projects.
 *Same brain as CapCut. Same logic as Premiere. 100% free. Actually useful.*
 =======
 # Filler-Words-Remover
-Creating this as an MVP to remove filler words like "uhm", "hmmm" 
->>>>>>> 154169d31f2437bf45cf15b230dda20d712ee71b
+Creating this as an MVP 
